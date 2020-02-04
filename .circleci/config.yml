@@ -3,7 +3,7 @@ jobs:
   build:
     machine: true
     steps:
-      - callerinfo
+      - checkout
       - run:
           name: caller information Build and push Docker image
           command: |
