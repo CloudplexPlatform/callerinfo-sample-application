@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    machine: true
+    steps:
+      - callerinfo
+      - run:
+          name: caller information Build and push Docker image
+          command: |
+            cd src/cartservice
+            sudo docker build -t cloudplexng/callerinfo:${CIRCLE_BUILD_NUM} .
+            sudo docker login -u "$username" -p "$password"
+            sudo docker push cloudplexng/callerinfo:${CIRCLE_BUILD_NUM}
